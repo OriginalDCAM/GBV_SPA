@@ -1,0 +1,20 @@
+<div id="wrapper">
+<div class="navbar">
+  <img id="login-logo" src="assets/Images/dashboard_logo.png">
+  <div class="navbar-menu-items">
+    <ul>
+      <li><a href="dashboard">Home</a></li>
+      <li><a href="view-users">Gebruikers weergeven</a></li>
+      <li><a href="map">Map</a></li>
+    </ul>
+  </div>
+</div>
+<div class="main-section">
+  <div class="main-navigation">
+    <button kendoButton  look="outline" (click)="logout()"><span class="k-icon k-i-logout"></span>Log uit</button>
+  </div>
+  <div class="main-content">
+  <p>Welkom {{ user.firstName }}</p>
+  </div>
+</div>
+</div>
