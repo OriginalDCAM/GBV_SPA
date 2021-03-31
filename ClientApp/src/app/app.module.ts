@@ -11,12 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import {DatePickerModule, DateInputsModule} from "@progress/kendo-angular-dateinputs";
 import { LabelModule } from '@progress/kendo-angular-label';
-import {RegisterComponent} from "./register/register.component";
+import {RegisterComponent} from "./pages/register/register.component";
 import { GridModule } from '@progress/kendo-angular-grid';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import {MapComponent} from "./map/map.component";
-import {LoginComponent} from "./login/login.component";
-import {DashboardComponent} from "./dashboard/dashboard.component";
+import {MapComponent} from "./pages/map/map.component";
+import {LoginComponent} from "./pages/login/login.component";
+import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 
 
 
