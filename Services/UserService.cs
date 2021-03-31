@@ -33,15 +33,15 @@ namespace WebApi.Services
 
                 var user = _context.Users.SingleOrDefault(x => x.Username == username);
 
-                // check if username exists
+                // checkt of gebruikersnaam bestaat
                 if (user == null)
                     return null;
 
-                // check if password is correct
+                // checkt of wachtwoord bestaat
                 if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
                     return null;
 
-                // authentication successful
+                // authenticatie gelukt
                 return user;
             }
 
@@ -83,17 +83,17 @@ namespace WebApi.Services
                 if (user == null)
                     throw new AppException("User not found");
 
-                // update username if it has changed
+                // update gebruikersnaam als het geupdate is
                 if (!string.IsNullOrWhiteSpace(userParam.Username) && userParam.Username != user.Username)
                 {
                     // throw error if the new username is already taken
                     if (_context.Users.Any(x => x.Username == userParam.Username))
-                        throw new AppException("Username " + userParam.Username + " is already taken");
+                        throw new AppException("Gebruikersnaam " + userParam.Username + " bestaat al");
 
                     user.Username = userParam.Username;
                 }
 
-                // update user properties if provided
+                // update de gebruikers gegevens als zijn opgegeven
                 if (!string.IsNullOrWhiteSpace(userParam.FirstName))
                     user.FirstName = userParam.FirstName;
 
@@ -102,7 +102,7 @@ namespace WebApi.Services
                 if (!string.IsNullOrWhiteSpace(userParam.GroupName))
                     user.GroupName = userParam.GroupName;
 
-                // update password if provided
+                // update wachtwoord als is opgegeven
                 if (!string.IsNullOrWhiteSpace(password))
                 {
                     byte[] passwordHash, passwordSalt;

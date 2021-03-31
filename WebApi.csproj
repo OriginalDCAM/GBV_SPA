@@ -22,6 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\auth" />
+    <Folder Include="ClientApp\src\app\users" />
     <Folder Include="Migrations\SqlServerMigrations\" />
   </ItemGroup>
 

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import {AuthGuard} from './auth/auth.guard';
 
 import { AppComponent } from './app.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
@@ -16,6 +17,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import {MapComponent} from "./map/map.component";
 import {LoginComponent} from "./login/login.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+
 
 
 
@@ -40,7 +42,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
       {path: 'register', component: RegisterComponent},
       {path: 'login', component: LoginComponent},
       {path: 'map', component: MapComponent},
-      {path: 'dashboard', component: DashboardComponent}
+      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]}
     ]),
     ButtonsModule,
     BrowserAnimationsModule,

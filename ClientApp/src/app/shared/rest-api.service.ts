@@ -57,7 +57,7 @@ export class RestApiService {
     // Verwijdert de gebruikers lokale gegevens en zet de huidige gebruiker naar null
     localStorage.removeItem('user');
     this.userSubject.next(null);
-    this.router.navigate(['/account/login']);
+    this.router.navigate(['/login']);
   }
   getAll() {
     // Haalt alle gebruikers op

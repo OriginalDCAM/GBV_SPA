@@ -14,5 +14,7 @@ export class DashboardComponent {
   constructor(private RestApiService: RestApiService) {
     this.user = this.RestApiService.userValue;
   }
-
+  logout() {
+    this.RestApiService.logout();
+  }
 }
