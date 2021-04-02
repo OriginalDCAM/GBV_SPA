@@ -1,1 +1,43 @@
-<p>view-users works!</p>
+
+<div id="wrapper">
+  <div class="navbar">
+    <img id="login-logo" src="assets/Images/dashboard_logo.png">
+    <div class="navbar-menu-items">
+      <ul>
+        <li><a href="dashboard">Home</a></li>
+        <li><a href="dashboard/view-users">Gebruikers weergeven</a></li>
+        <li><a href="map">Map</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-section">
+    <div class="main-navigation">
+      <button kendoButton  look="outline" (click)="logout()"><span class="k-icon k-i-logout"></span>Log uit</button>
+    </div>
+    <div class="main-content">
+      <kendo-grid [kendoGridBinding]="users"
+                  [height]="410"
+                  [columnMenu]="true"
+                  [filterable]="true"
+                  [sortable]="true"
+                  (remove)="removeHandler($event)" >
+        <kendo-grid-column field="id" title="#" width="100" filter="numeric">
+        </kendo-grid-column>
+        <kendo-grid-column field="firstName" title="Voornaam" width="200">
+        </kendo-grid-column>
+        <kendo-grid-column field="lastName" title="Achternaam" width="200">
+        </kendo-grid-column>
+        <kendo-grid-column field="username" title="Gebruikersnaam" width="200">
+        </kendo-grid-column>
+        <kendo-grid-column field="groupName" title="Groep" width="200">
+        </kendo-grid-column>
+        <kendo-grid-command-column title="command" width="220">
+          <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <button kendoGridEditCommand [primary]="true">Bewerken</button>
+            <button kendoGridRemoveCommand>Verwijderen</button>
+          </ng-template>
+        </kendo-grid-command-column>
+      </kendo-grid>
+    </div>
+  </div>
+</div>

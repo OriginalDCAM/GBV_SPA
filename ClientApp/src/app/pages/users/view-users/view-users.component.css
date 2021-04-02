@@ -1,0 +1,30 @@
+#wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+}
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  opacity: 75%;
+  background:linear-gradient(to top, rgba(175, 185, 196, 1), rgba(117, 19, 93, 0)),  url("https://images.unsplash.com/photo-1532939198640-a7f0da02b62f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80") ;
+  width: 20%;
+}
+.navbar > img {
+  width: 75%;
+  height: 15vh;
+  opacity: 100%;
+}
+.main-section {
+  width: 80%;
+}
+.main-navigation {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: auto;
+  background: lightgrey;
+}

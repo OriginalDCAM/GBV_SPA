@@ -60,5 +60,9 @@ kendo-floatinglabel {
 input {
   background: lightgrey;
 }
+kendo-dropdownlist {
+  width: 100%;
+  background: lightgrey;
+}
 
 

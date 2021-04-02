@@ -28,7 +28,7 @@
         </kendo-formfield>
         <kendo-formfield>
           <kendo-floatinglabel text="groep">
-            <kendo-textbox placeholder="Type uw groep catagorie in" formControlName="groupName" [showErrorIcon]="'initial'" [clearButton]="true" required></kendo-textbox>
+            <kendo-dropdownlist [data]="groupItems" formControlName="groupName"></kendo-dropdownlist>
           </kendo-floatinglabel>
         </kendo-formfield>
           <input type="checkbox" id="terms" kendoCheckBox />

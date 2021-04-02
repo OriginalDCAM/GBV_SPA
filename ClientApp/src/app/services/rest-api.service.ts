@@ -21,24 +21,10 @@ export class RestApiService {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.user = this.userSubject.asObservable();
   }
-    httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    }
   public get userValue(): User {
     return this.userSubject.value;
   }
 
-
-  getUsers(): Observable<User> {
-    // Haalt gebruiker op
-    return this.http.get<User>(this.apiURL + '/api/User')
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
-  }
     // HttpClient API post() method => Maak gebruiker
   register(user: User) {
     return this.http.post(this.apiURL + `/users/register`, user);
@@ -68,19 +54,31 @@ export class RestApiService {
     // Haalt gebruiker op bij id
     return this.http.get<User>(this.apiURL + `/users/${id}`);
   }
+  delete(id: string) {
+    return this.http.delete(this.apiURL + `/users/${id}`)
+      .pipe(map(x => {
+        // auto logout if the logged in user deleted their own record
+        if (id == this.userValue.id) {
+          this.logout();
+        }
+        return x;
+      }));
+  }
+  update(id, params) {
+    return this.http.put(this.apiURL + `/users/${id}`, params)
+      .pipe(map(x => {
+        // update stored user if the logged in user updated their own record
+        if (id == this.userValue.id) {
+          // update local storage
+          const user = { ...this.userValue, ...params };
+          localStorage.setItem('user', JSON.stringify(user));
 
+          // publish updated user to subscribers
+          this.userSubject.next(user);
+        }
+        return x;
+      }));
+  }
 
-    handleError(error) {
-      let errorMessage = '';
-      if(error.error instanceof ErrorEvent) {
-        // client-side error
-        errorMessage = error.error.message;
-      } else {
-        // server-side error
-        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-      }
-      window.alert(errorMessage);
-      return throwError(errorMessage);
-    }
   }
 

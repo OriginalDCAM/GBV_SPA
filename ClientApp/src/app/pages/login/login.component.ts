@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   userForm: FormGroup;
   loading = false;
   submitted = false;
+  public groupItems: Array<string> = ['Administratie', 'Development', 'Partner'];
 
   constructor(
     private formBuilder: FormBuilder,
