@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import {AuthGuard} from './auth/auth.guard';
 import {JwtInterceptor} from './auth/jwt.interceptor';
 
 import { AppComponent } from './app.component';
@@ -18,14 +16,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import {MapComponent} from "./pages/map/map.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
-import {ViewUsersComponent} from "./pages/users/view-users/view-users.component";
-import {AddEditComponent} from "./pages/users/add-edit/add-edit.component";
-
-
-
-
-
-
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -34,23 +25,11 @@ import {AddEditComponent} from "./pages/users/add-edit/add-edit.component";
     MapComponent,
     LoginComponent,
     DashboardComponent,
-    ViewUsersComponent,
-    AddEditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      {path: '', component: LoginComponent},
-      {path: 'register', component: RegisterComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'map', component: MapComponent},
-      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-      {path: 'dashboard/view-users', component: ViewUsersComponent, canActivate: [AuthGuard]},
-      { path: 'dashboard/add', component: AddEditComponent, canActivate: [AuthGuard] },
-      { path: 'dashboard/edit/:id', component: AddEditComponent, canActivate: [AuthGuard] }
-    ]),
     ButtonsModule,
     BrowserAnimationsModule,
     InputsModule,
@@ -59,7 +38,8 @@ import {AddEditComponent} from "./pages/users/add-edit/add-edit.component";
     LabelModule,
     DateInputsModule,
     GridModule,
-    DropDownsModule
+    DropDownsModule,
+    AppRoutingModule
   ],
   providers: [
   {
@@ -69,6 +49,4 @@ import {AddEditComponent} from "./pages/users/add-edit/add-edit.component";
     ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule { };

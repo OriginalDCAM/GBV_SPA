@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RestApiService} from "../../../services/rest-api.service";
 import {first} from "rxjs/operators";
+import { Router } from '@angular/router';
 import {User} from "../../../models";
 
 @Component({
@@ -11,7 +12,7 @@ import {User} from "../../../models";
 export class ViewUsersComponent {
   users = null;
 
-  constructor(private accountService: RestApiService) {}
+  constructor(private accountService: RestApiService, private router: Router) {}
 
   ngOnInit() {
     this.accountService.getAll()
@@ -23,6 +24,10 @@ export class ViewUsersComponent {
   public removeHandler({dataItem}) {
     this.deleteUser(dataItem.id);
   }
+  public editHandler({dataItem}) {
+    this.router.navigate(['/dashboard/edit', dataItem.id]);
+  }
+
   user: User;
 
   logout() {
